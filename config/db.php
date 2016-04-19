@@ -19,10 +19,9 @@ elseif(YII_ENV_PROD)
     $db = substr($clearDB["path"], 1);
     $ret_arr = [
         'class' => 'yii\db\Connection',
-        'dsn' => "mysql:host=$server;dbname=$db",
+        'dsn' => "mysql:host=$server;port=8889;dbname=$db",
         'username' => $username,
         'password' => $password,
-        'port' => '8889',
         'charset' => 'utf8',
     ];
 }
