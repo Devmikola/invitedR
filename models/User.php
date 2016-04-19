@@ -77,6 +77,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasOne(Invite::className(), ['id' => 'invite_id']);
     }
 
+    public static function findFullData()
+    {
+        return self::find()->select('id, login, phone,');
+    }
+
     /**
      * Finds an identity by the given ID.
      *
