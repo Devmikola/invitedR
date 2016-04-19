@@ -98,3 +98,43 @@ form div.required label.control-label:after {
     content:" * ";
     color:red;
 }
+
+input {
+    display: inline-block !important;
+}
+
+div.help-block {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.create-invite {
+    background-color: #eeeeee;
+    padding-left: 34px; padding-top: 20px;
+}
+
+.invite-send-button {
+    padding-left: 0px;
+    margin-bottom: 20px;
+}
+
+.logout-link {
+    padding-top: 14px;
+}
+
+.user-create-form {
+    background-color: #eeeeee;
+    padding-left: 34px;
+}
+
+.title-registration {
+   padding-top: 10px;
+}
+
+.user-create-buttons {
+    padding-left: 0px;
+    margin-bottom: 20px;
+}
+.button-margin-left {
+    margin-left: 60px;
+}

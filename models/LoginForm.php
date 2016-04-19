@@ -24,11 +24,20 @@ class LoginForm extends Model
     {
         return [
             // login and password are both required
-            [['login', 'password'], 'required'],
+            [['login', 'password'], 'required', 'message' => 'Поле "{attribute}" не должно быть пустым.'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить Меня',
         ];
     }
 

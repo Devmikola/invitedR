@@ -29,6 +29,9 @@ class Invite extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['id', 'required', 'message' => 'Поле "{attribute}" не может быть пустым'],
+            ['id', 'match', 'pattern' => '/^\d{6}$/', 'message' => 'Код инвайта должен состоять из 6 цифр.'],
+            ['id', 'unique', 'message' => 'Инвайт с таким кодом уже существует.'],
             [['status'], 'integer'],
             [['date_activation'], 'safe'],
         ];
@@ -40,7 +43,7 @@ class Invite extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Код инвайта',
             'status' => 'Status',
             'date_activation' => 'Date Activation',
         ];
@@ -49,8 +52,8 @@ class Invite extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->hasMany(User::className(), ['invite_id' => 'id']);
+        return $this->hasOne(User::className(), ['invite_id' => 'id']);
     }
 }

@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\User;
 
 AppAsset::register($this);
 ?>
@@ -36,17 +37,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Пользователи', 'url' => ['/user/index'], 'visible' => ! Yii::$app->user->getId() ? false : User::isAdmin(Yii::$app->user->getId())],
+            ['label' => 'Инвайты', 'url' => ['/invite/index'], 'visible' => ! Yii::$app->user->getId() ? false : User::isAdmin(Yii::$app->user->getId())],
+            ['label' => 'Регистрация', 'url' => ['/user/create'], 'visible' => Yii::$app->user->isGuest],
+            ['label' => 'Профиль', 'url' => ['/user/view', 'id' => Yii::$app->user->getId()], 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->login . ')',
-                    ['class' => 'btn btn-link']
+                    'Выйти (' . Yii::$app->user->identity->login . ')',
+                    ['class' => 'btn btn-link logout-link']
                 )
                 . Html::endForm()
                 . '</li>'
@@ -60,6 +62,14 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?php
+        use yii\bootstrap\Alert;
+
+        if($flash = Yii::$app->session->getFlash('success')){
+            echo Alert::widget(['options' => ['class' => 'alert-success'], 'body' => $flash]);
+        } ?>
+
         <?= $content ?>
     </div>
 </div>

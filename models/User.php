@@ -61,6 +61,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         ];
     }
 
+    public static function isAdmin($id)
+    {
+        return self::findOne($id)->login == 'admin' ? true : false;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -75,11 +80,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getInvite()
     {
         return $this->hasOne(Invite::className(), ['id' => 'invite_id']);
-    }
-
-    public static function findFullData()
-    {
-        return self::find()->select('id, login, phone,');
     }
 
     /**
