@@ -22,7 +22,7 @@ elseif(YII_ENV_PROD)
         'dsn' => "mysql:host=$server;dbname=$db",
         'username' => $username,
         'password' => $password,
-        'port' => '3306',
+        'port' => '8889',
         'charset' => 'utf8',
     ];
 }
