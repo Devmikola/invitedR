@@ -9,7 +9,7 @@ $form = ActiveForm::begin([
     'enableAjaxValidation' => true,
 ]) ?>
 
-<h1 style="padding-top: 10px;">Registration Page</h1>
+<h1 style="padding-top: 10px;">Регистрация</h1>
 
 <?= $form->field($model, 'login') ?>
 <?= $form->field($model, 'password')->passwordInput() ?>
