@@ -20,7 +20,7 @@ class UserController extends \yii\web\Controller
             'class' => AccessControl::className(),
             'rules' => [
                 [
-                    'actions' => ['create'],
+                    'actions' => ['create', 'cities'],
                     'allow' => true,
                     'roles' => ['?'],
                 ],

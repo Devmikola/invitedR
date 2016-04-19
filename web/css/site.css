@@ -138,3 +138,7 @@ div.help-block {
 .button-margin-left {
     margin-left: 60px;
 }
+
+.form-group {
+    margin-bottom: 10px;
+}

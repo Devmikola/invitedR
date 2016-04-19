@@ -11,17 +11,12 @@ if(YII_ENV_DEV) {
 }
 elseif(YII_ENV_PROD)
 {
-    $clearDB = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-    $server = $clearDB["host"];
-    $username = $clearDB["user"];
-    $password = $clearDB["pass"];
-    $db = substr($clearDB["path"], 1);
     $ret_arr = [
         'class' => 'yii\db\Connection',
-        'dsn' => "mysql:host=$server;port=8889;dbname=$db",
-        'username' => $username,
-        'password' => $password,
+        'dsn' => 'mysql:host=sql7.freesqldatabase.com;port=3306;dbname=sql7115941',
+        'username' => 'sql7115941',
+        'password' => 'jxTdpbka7g',
         'charset' => 'utf8',
     ];
 }

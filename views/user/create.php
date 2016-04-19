@@ -31,14 +31,11 @@ $form = ActiveForm::begin([
 );?>
 
 <?= $form->field($model, 'invite_id',  ['template' => "{label}<br>{input}{error}"])->textInput(['maxlength' => 6])  ?>
-
-
     <div class="form-group">
         <div class="col-lg-12 user-create-buttons">
             <?= Html::submitButton('Регистрация', ['class' => 'btn btn-primary']) ?>
             <?= Html::resetButton('Очистить', ['class' => 'btn btn-primary button-margin-left']) ?>
         </div>
-
 
     </div>
 <?php ActiveForm::end() ?>
